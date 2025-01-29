@@ -49,3 +49,11 @@ graph_data = {
 @app.get("/api/graph-data")
 async def get_graph_data():
     return graph_data
+
+@app.get("/api/nodes")
+async def get_nodes():
+    return nodes
+
+@app.get("/api/edges")
+async def get_edges():
+    return edges
