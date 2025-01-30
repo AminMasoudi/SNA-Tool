@@ -1,14 +1,16 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import "./App.css";
-import ForceDirectedGraph from "./ForceDirectedGraph";
-import Graph from "./components/Graph";
 import LeftSideBar from "./components/LeftSideBar";
-import NavBar from "./components/NavBar";
+import { Node } from "./services/node-service";
 import Main from "./components/Main";
+import { useState } from "react";
 
 function App() {
+  const [selectedNode, setSelectedNode] = useState<Node | null>(null);
+
+
   return (
-    <Grid paddingX="10px" paddingY="10px" gap={"10px"}
+    <Grid  paddingY="10px" gap={"10px"}
       templateAreas={{
         base: `"main"`,
         lg: `"left-sidebar main"`,
@@ -18,9 +20,6 @@ function App() {
         lg: "30% 1fr"
       }}
     >
-      {/* <GridItem area={"nav"}>
-        <NavBar/>
-      </GridItem> */}
       <Show above="lg">
         <GridItem  area={"left-sidebar"} >
           <LeftSideBar/>
@@ -28,8 +27,9 @@ function App() {
       </Show>
       
       <GridItem area={"main"}>
-    {/* <ForceDirectedGraph /> */}
-      <Main/>
+      <Main setSelectedNode={ d =>{
+        setSelectedNode(d)
+      }}/>
       </GridItem>
     </Grid>
   );
