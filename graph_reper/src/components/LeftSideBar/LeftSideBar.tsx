@@ -21,6 +21,7 @@ function LeftSideBar() {
         marginBottom="10px"
         h={{ base: "40px", lg: "calc(100vh - 64px)" }}
         borderRight={"solid 1px teal"}
+        padding="10px"
       >
         <Tabs isFitted variant="unstyled">
           <TabList>
