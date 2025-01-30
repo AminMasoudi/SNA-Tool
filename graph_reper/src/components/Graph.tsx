@@ -1,8 +1,11 @@
 import {
+  Box,
   Card,
   CardBody,
   CardHeader,
+  Center,
   Heading,
+  HStack,
   ListItem,
   Spinner,
   UnorderedList,
@@ -19,35 +22,26 @@ function Graph() {
 
   return (
     <>
-      <Card  paddingX="10px" height={(window.innerHeight) *0.7}>
-        <CardHeader>
+      <Box paddingX="10px" height={window.innerHeight * 0.9}>
+        <Box>
           <Heading>Graph View</Heading>
-        </CardHeader>
-        <CardBody padding={0}>
-          <ForceDirectedGraph/>
-          {nodeLoading && edgeLoading && (
+        </Box>
+        <Box padding={0}>
+          {nodeLoading && edgeLoading ? (
+            <Center h="calc(100vh - 64px)" marginX="auto">
             <Spinner
-            thickness="4px"
-            speed="0.65s"
-            emptyColor="gray.200"
-            color="blue.500"
-            size="xl"
-            />
+              thickness="4px"
+              speed="0.65s"
+              emptyColor="gray.200"
+              color="blue.500"
+              size="xl"
+              />
+              </Center>
+          ) : (
+            <ForceDirectedGraph />
           )}
-          {/* <UnorderedList>
-            {nodes.slice(0,10).map((node) => (
-              <ListItem key={node.id}>{node.name}</ListItem>
-            ))}
-          </UnorderedList>
-          <UnorderedList>
-            {edges.slice(0,10).map((edge, index) => (
-              <ListItem key={index}>
-                {edge.source} {"\t"}to {"\t"} {edge.target}
-              </ListItem>
-            ))}
-          </UnorderedList> */}
-            </CardBody>
-      </Card>
+        </Box>
+      </Box>
     </>
   );
 }
