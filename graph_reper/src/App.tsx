@@ -4,6 +4,7 @@ import ForceDirectedGraph from "./ForceDirectedGraph";
 import Graph from "./components/Graph";
 import LeftSideBar from "./components/LeftSideBar";
 import NavBar from "./components/NavBar";
+import Main from "./components/Main";
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
       
       <GridItem area={"main"}>
     {/* <ForceDirectedGraph /> */}
-      <Graph/>
+      <Main/>
       </GridItem>
     </Grid>
   );
