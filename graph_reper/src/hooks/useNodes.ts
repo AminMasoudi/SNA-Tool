@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import nodeService, {Node} from "../services/node-service"
+import { CanceledError } from "axios"
 
 
 const useNodes = () => {
@@ -15,8 +16,14 @@ const useNodes = () => {
             console.log(res.data)
             setNodes(res.data)
         })
-        .catch((err)=>{setError(err)})
+        .catch((err)=>{
+            if (err instanceof CanceledError) return
+            setError(err)
+
+        })
         .finally(()=>setLoading(false))
+
+        return cancel
     }, [])
     return {nodes, error, loading}
 

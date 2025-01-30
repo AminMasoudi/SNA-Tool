@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import edgeService, { Edge } from "../services/edge-service";
 import { buffer } from "d3";
+import { CanceledError } from "axios";
 
 const useEdges = () => {
   const [edges, setEdges] = useState<Edge[]>([]);
@@ -19,9 +20,13 @@ const useEdges = () => {
         setEdges(edges);
       })
       .catch((err) => {
+        if (err instanceof CanceledError) return
+
         setError(err);
       })
       .finally(() => setLoading(false));
+
+      return cancel
   }, []);
   return { edges, error, loading };
 };
