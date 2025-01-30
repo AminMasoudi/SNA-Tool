@@ -24,7 +24,15 @@ function BtnDrawer({
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Button leftIcon={leftIcon} onClick={onOpen} colorScheme={colorScheme}>
+      <Button
+        leftIcon={leftIcon}
+        onClick={onOpen}
+        bg={colorScheme}
+        color="#fff"
+        fontSize="medium"
+        fontWeight={"medium"}
+        colorScheme={colorScheme}
+      >
         {name}
       </Button>
       <AbstractDrawer
