@@ -1,8 +1,5 @@
 import {
   Box,
-  Divider,
-  Flex,
-  HStack,
   Tab,
   TabIndicator,
   TabList,
@@ -12,8 +9,15 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import OperationForm from "./OperationForm";
+import InfoTab from "./InfoTab";
+import { Node } from "../../services/node-service";
 
-function LeftSideBar() {
+interface Props{
+  selectedNode: Node|null
+}
+
+
+function LeftSideBar({selectedNode}: Props) {
   const [operation, setOperation] = useState(null);
   return (
     <>
@@ -44,7 +48,7 @@ function LeftSideBar() {
               <p>Filters</p>
             </TabPanel>
             <TabPanel>
-              <p>Info</p>
+            <InfoTab selectedNode={selectedNode}/>
             </TabPanel>
             <TabPanel>
               <p>Analytic</p>

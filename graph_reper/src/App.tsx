@@ -22,14 +22,18 @@ function App() {
     >
       <Show above="lg">
         <GridItem  area={"left-sidebar"} >
-          <LeftSideBar/>
+          <LeftSideBar selectedNode={selectedNode}/>
         </GridItem>
       </Show>
       
       <GridItem area={"main"}>
-      <Main setSelectedNode={ d =>{
-        setSelectedNode(d)
-      }}/>
+      <Main setSelectedNode={ (d) => {
+      setSelectedNode((prevSelectedNode) => {
+        if (prevSelectedNode?.id === d.id) {
+          return null;
+        }
+        return d;
+      })}}/>
       </GridItem>
     </Grid>
   );
